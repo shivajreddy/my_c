@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1065D86D2C45CDF1004BF104 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 1065D86C2C45CDF1004BF104 /* main.c */; };
+		1065D8772C45D186004BF104 /* temperature.c in Sources */ = {isa = PBXBuildFile; fileRef = 1065D8732C45D186004BF104 /* temperature.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,10 @@
 /* Begin PBXFileReference section */
 		1065D8692C45CDF1004BF104 /* pilot */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = pilot; sourceTree = BUILT_PRODUCTS_DIR; };
 		1065D86C2C45CDF1004BF104 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		1065D8732C45D186004BF104 /* temperature.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = temperature.c; path = pilot/temperature.c; sourceTree = "<group>"; };
+		1065D8742C45D186004BF104 /* romeo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = romeo.txt; path = pilot/romeo.txt; sourceTree = "<group>"; };
+		1065D8752C45D186004BF104 /* pilot.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = pilot.vcxproj; path = pilot/pilot.vcxproj; sourceTree = "<group>"; };
+		1065D8762C45D186004BF104 /* Notes-1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Notes-1.txt"; path = "pilot/Notes-1.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,10 @@
 		1065D8602C45CDF1004BF104 = {
 			isa = PBXGroup;
 			children = (
+				1065D8762C45D186004BF104 /* Notes-1.txt */,
+				1065D8752C45D186004BF104 /* pilot.vcxproj */,
+				1065D8742C45D186004BF104 /* romeo.txt */,
+				1065D8732C45D186004BF104 /* temperature.c */,
 				1065D86B2C45CDF1004BF104 /* pilot */,
 				1065D86A2C45CDF1004BF104 /* Products */,
 			);
@@ -119,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1065D8772C45D186004BF104 /* temperature.c in Sources */,
 				1065D86D2C45CDF1004BF104 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
