@@ -131,6 +131,7 @@
     <ClCompile Include="temperature.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Notes-1.txt" />
     <Text Include="romeo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

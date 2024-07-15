@@ -1,48 +1,36 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-/*
-// comments like this are introduced later.
-stdio.h is the standard library of C
-*/
+#include <time.h>
+#include <stdlib.h>
 
-/*
-%d -> digit
-%s -> string
-%.1f -> precision
-%p -> pointer
-*/
+#define SIZE 50
 
-/* C11 standard
-char buffer[1000];
-printf("Enter a string: ");
-scanf_s("%[^\n]1000s", buffer, (unsigned)sizeof(buffer));
-printf("You entered: %s\n", buffer);
-*/
+struct fat_boy {
+	char v[SIZE];
+};
 
-/* using the pre-processor directive	#define _CRT_SECURE_NO_WARNINGS
-char buffer[1000];
-printf("type something\n");
+typedef struct fat_boy fat_boy;
 
-scanf("%[^\n]1000s", buffer);
 
-printf("You entered: %s\n", buffer);
-*/
+void find_42(fat_boy boy) {
+	int i = 0;
 
-/*
-Three streams
-(read as standard-input, standard-output, standard-error)
-stdin -> gets the input from keyboard
-stdout -> prints the output on screen
-strderr -> prints the output on screen
-*/
-
-void fahrenheit_to_celcius();
-void celcius_to_fahrenheit();
-
+	while (1) {
+		if (boy.v[i] == 42) {
+			printf("42 is in position: %d\n", i);
+			break;
+		}
+		//i++;
+		++i;
+	}
+}
 
 int main() {
+	fat_boy boy;
 
+	srand(time(NULL));	// wtf does this do?
 
+	boy.v[rand() % SIZE] = 42;
 
+	find_42(boy);
 }
 
