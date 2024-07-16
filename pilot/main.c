@@ -1,12 +1,12 @@
 /* ************************************************************
-* Author: Shiva                                               *
-* Purpose: Learning C                                         *
-* Materil: Books, Videos                                      *
-************************************************************ */
+ * Author: Shiva                                               *
+ * Purpose: Learning C                                         *
+ * Materil: Books, Videos                                      *
+ ************************************************************ */
 
 #include <stdio.h>
 
-void print_array(int* arr);
+void print_array(int *arr, int size);
 // void print_grid(int* grid);
 
 int main(void) {
@@ -21,22 +21,14 @@ int main(void) {
   int grid[r][c] = {{}};
 
   int arr[20] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-  int n = sizeof
+  int n = sizeof(arr) / sizeof(arr[0]);
   print_array(arr, n);
 }
 
+void print_array(int *arr, int size) {
 
-
-
-void print_array(int* arr) {
-  printf("size of arr: %d\n", sizeof(arr));
-  printf("size of arr[0]: %d\n", sizeof(arr[0]));
-  int size = sizeof(arr) / sizeof(arr[0]);
-  printf("size : %d\n", size);
-
-  for (int idx=0; idx<size; idx++)
+  for (int idx = 0; idx < size; idx++)
     printf("%d:%d\n", idx, arr[idx]);
-
 }
 
 // void print_grid(int* grid);
