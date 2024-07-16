@@ -8,4 +8,6 @@
 
 int main(void) {
 
+  printf("%s\n", "hi man");
+
 }
