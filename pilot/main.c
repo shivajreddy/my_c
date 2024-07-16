@@ -6,29 +6,28 @@
 
 #include <stdio.h>
 
-void print_array(int *arr, int size);
-// void print_grid(int* grid);
+void print_grid(int *grid, int r, int c);
 
 int main(void) {
-  // int grid[3][4] = {{1, 2, 3}, {21, 31, 41}, {300, 400, 500}};
-  // printf("grid = %p\n", grid);
-  // printf("grid[0] = %p\n", grid[0]);
-  // printf("*grid[0] = %d\n", *grid[0]);
-  // printf("grid[0] = %d\n", grid[2][1]);
 
   const int r = 3;
   const int c = 4;
-  int grid[r][c] = {{}};
 
-  int arr[20] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-  int n = sizeof(arr) / sizeof(arr[0]);
-  print_array(arr, n);
+  int grid[r][c] = {{10, 20, 30}, {40, 50, 60}};
+
+  printf("%d\n", *grid[0]);
+  printf("%d\n", *grid[1]);
+  printf("%p\n", grid[0]);
+
+  printf("%d\n", grid[0][0]);
+  printf("%p\n", &(grid[0][0]));
 }
 
-void print_array(int *arr, int size) {
+void print_grid(int *grid, int m, int n) {
 
-  for (int idx = 0; idx < size; idx++)
-    printf("%d:%d\n", idx, arr[idx]);
+  for (int r = 0; r < m; r++) {
+    for (int c = 0; c < n; c++) {
+      // printf("(%d,%d): %d", r, c, grid[r][c]);
+    }
+  }
 }
-
-// void print_grid(int* grid);
