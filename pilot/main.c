@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "math.h"
 
 int main(void) {
 
@@ -15,6 +16,12 @@ int main(void) {
   for(int i=0; i<sizeof(letters);i++)
     printf("%d:%c\n", i, letters[i]);
 
+  printf("%d+%d=%d\n", 10, 20, add(10, 20));
+  printf("%d+%d=%d\n", 10, 20, add(10, 20));
+  printf("%d+%d=%d\n", 10, 20, add(10, 20));
+  printf("%d+%d=%d\n", 10, 20, add(10, 20));
+  printf("%d-%d=%d\n", 10, 20, subtract(10, 20));
+  printf("%d-%d=%d\n", 10, 20, subtract(10, 20));
   /*
   - Array
   creating an array will set the value of the variable to the
