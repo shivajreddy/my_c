@@ -2,8 +2,18 @@
 
 int main(void) {
 
-  printf("Hello World!\n");
-  print("Hello World!\n");
+  char letters[10] = {'f', 'a', 'm', 'i', 'l', 'a', 'r' };
+
+  printf("%p\n", letters);
+  printf("%c\n", *letters);
+  printf("%c\n", *(letters+1));
+  printf("%c\n", *(letters+2));
+  printf("size of array: %lu bytes\n", sizeof(letters));
+  printf("%c\n", *(letters+20));
+
+  // print all the letters in the array
+  for(int i=0; i<sizeof(letters);i++)
+    printf("%d:%c\n", i, letters[i]);
 
   /*
   - Array
