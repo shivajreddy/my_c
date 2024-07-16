@@ -12,6 +12,8 @@ void print_grid(int *grid, int r, int c);
 
 int main(void) {
 
+  printf("hello\n");
+
   // int c[10] = {5, 1, 9, [4] = 3, 7, 2, [8] = 6};
   // print_array(c, 10);
 
