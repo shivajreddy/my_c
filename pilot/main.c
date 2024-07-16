@@ -18,8 +18,8 @@ int main(void) {
   // char letters[10] = {'a', 'c'};
   // print_array_chars(letters, 10);
 
-  int boolean_nums[9] = {};
-  print_array(boolean_nums, 9);
+  // int boolean_nums[9] = {};
+  // print_array(boolean_nums, 9);
 
   /*
   int a[10][4] = {0};
