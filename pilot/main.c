@@ -2,6 +2,8 @@
 
 int main(void) {
 
+  printf("Hello World!");
+
   /*
   - Array
   creating an array will set the value of the variable to the
