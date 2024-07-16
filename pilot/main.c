@@ -12,18 +12,14 @@ void print_grid(int *grid, int r, int c);
 
 int main(void) {
 
-<<<<<<< HEAD
-  printf("%s\n", "hi man");
-
-=======
   // int c[10] = {5, 1, 9, [4] = 3, 7, 2, [8] = 6};
   // print_array(c, 10);
 
   // char letters[10] = {'a', 'c'};
   // print_array_chars(letters, 10);
 
-  int boolean_nums[9] = {};
-  print_array(boolean_nums, 9);
+  // int boolean_nums[9] = {};
+  // print_array(boolean_nums, 9);
 
   /*
   int a[10][4] = {0};
@@ -64,5 +60,4 @@ void print_grid(int *grid, int m, int n) {
       // printf("(%d,%d): %d", r, c, grid[r][c]);
     }
   }
->>>>>>> teclab
 }
