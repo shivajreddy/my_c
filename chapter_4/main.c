@@ -20,8 +20,8 @@ int main() {
     (d) i = 1; j = 2; k = 3;
     printf("%d", (i + 5) % (j + 2) / k);
   */
-  printf("%d\n", 8 / 5);
-  printf("%d\n", -8 / 5);
-  printf("%d\n", 8 / -5);
-  printf("%d\n", -8 / -5);
+  int i = 7;
+  int j = 6 + (i = 2.5);
+  printf("%d\n", i);
+  printf("%d\n", j);
 }
