@@ -5,6 +5,22 @@
 void print_array(int *arr, int n);
 
 int main() {
+  int arr[3] = {10, 20, 30};
+  // print_array(arr, 3);
+
+  int *p = arr;
+  while (p < arr + 3)
+    printf("%d ", *p++ = -31);
+
+  /*
+  int arr[3] = {10, 20, 30}, x = 20;
+  print_array(arr, 3);
+
+  for (int *p = arr; p < arr + 3; p++)
+    *p = -31;
+
+  print_array(arr, 3);
+  */
 
   /*
   srand(time(NULL));
@@ -36,6 +52,7 @@ int main() {
   // *++p
   // *(++p)
 
+  /*
   int arr[3] = {8, 97, 62};
   print_array(arr, 3);
 
@@ -54,6 +71,7 @@ int main() {
   printf("*p=%d\n", *p);
 
   print_array(arr, 3);
+  */
 }
 
 void print_array(int *arr, int n) {
