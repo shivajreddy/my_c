@@ -1,9 +1,16 @@
-#include <stdio.h>
+// #include <stdio.h>
 
 // int i;
 void avg_sum(double a[], int n, double *avg, double *sum);
 
+int *largest(int *p, int *q) {
+  if (*p > *q)
+    return p;
+  return q;
+}
+
 int main() {
+
   /*
   double arr[] = {3, 5, 2, 10, 30};
   int n = sizeof(arr) / sizeof(arr[0]);
