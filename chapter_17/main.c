@@ -22,6 +22,7 @@ int main() {
   const char *sentence = "hello \nwow, this is a long sentence huh";
   print_str(sentence);
 
+  /*
   void *p;
   p = malloc(999999999999999999);
   // p = malloc(50);
@@ -31,6 +32,7 @@ int main() {
 
   printf("%lu\n", sizeof(p));
   printf("%d\n", *(int *)p);
+  */
 
   /*
   int arr[5] = {97, 'A', 30, 40};
