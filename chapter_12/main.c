@@ -1,16 +1,28 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
 void print_array(int *arr, int n);
 
+bool is_palidrome(char *s) {
+  char *p = s;
+  return true;
+}
+
 int main() {
   int arr[3] = {10, 20, 30};
   // print_array(arr, 3);
 
   int *p = arr;
-  while (p < arr + 3)
-    printf("%d ", *p++ = -31);
+  //
+  // while (p < arr + 3)
+  //   printf("%d ", *p++);
+
+  printf("%d", p[22]);
+
+  // while (p < arr + 3)
+  //   printf("%d ", *p++ = -31);
 
   /*
   int arr[3] = {10, 20, 30}, x = 20;
