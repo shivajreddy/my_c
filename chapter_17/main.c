@@ -16,6 +16,7 @@ int main() {
 
   malloc signature
   void *malloc(size_t __size);
+  hi
   */
 
   const char *sentence = "hello \nwow, this is a long sentence huh";
