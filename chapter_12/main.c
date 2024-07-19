@@ -11,6 +11,8 @@ bool is_palidrome(char *s) {
 }
 
 int main() {
+
+  /*
   int arr[3] = {10, 20, 30};
   // print_array(arr, 3);
 
