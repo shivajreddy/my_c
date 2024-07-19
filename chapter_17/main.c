@@ -6,6 +6,22 @@ char *concat(const char *s1, const char *s2);
 void print_str(const char *s);
 
 int main() {
+
+  // create an array of strings
+
+  const char *arr[10];
+  arr[0] = "hello there";
+
+  printf("%p \n", arr);
+  printf("%s \n", arr[0]);
+  printf("%s \n", arr[1]);
+  printf("%s \n", arr[3]);
+
+  printf("%d \n", *arr[0] == '\0');
+
+  char *empty = "";
+  printf("%c \n", *empty);
+
   // NULL_POINTER is defined in 6 header files (incuding stdlib.h)
   // malloc is defined in stdlib header file
 
@@ -63,13 +79,12 @@ char *concat(const char *s1, const char *s2) {
 }
 
 void print_str(const char *s) {
-  int n = strlen(s);
-  const char *p = s;
-
+  // int n = strlen(s);
   // while (p < s + n - 1)
   //   printf("%c", *p++);
 
   // p goes until the `null character`
+  const char *p = s;
   while (*p != '\0')
     printf("%c", *p++);
 }
