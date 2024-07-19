@@ -1,3 +1,4 @@
+
 # Prerequisites
 *.d
 *.ll
@@ -40,6 +41,8 @@
 *.lib
 
 # Executables
+*output
+*.output
 *.exe
 *.out
 *.app
