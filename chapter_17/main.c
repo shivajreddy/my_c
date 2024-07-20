@@ -7,8 +7,47 @@ void print_str(const char *s);
 
 int main() {
 
+  // int arr[7] = {10, 20, 30, 40, 50, 60, 70};
+  // int arr[7] = {0, 0, 0, 0, 0, 0, 0};
+  int arr[7] = {-3, -2, -2, -1, 0, 8, 9};
+  int n = sizeof(arr) / sizeof(arr[0]);
+  // printf("%d\n", n);
+
+  int *l, *r;
+
+  l = arr + (n / 2);
+  printf("%d \n", *l);
+  while (l >= arr) {
+    if (*l > 0)
+      break;
+    l--;
+  }
+  printf("%d \n", *l);
+
+  r = arr + n / 2;
+  printf("r:%d \n", *r);
+  while (r <= arr + n) {
+    if (*r > 0)
+      break;
+    r++;
+  }
+  printf("%d \n", *r);
+
+  return 0;
+  int *p;
+
+  p = arr + 1;
+  printf("%d\n", *p);
+
+  // printf("%d\n", *(p + 3 / 2));
+
   // create an array of strings
 
+  char *word1 = "hello";
+  char *word2 = "there";
+  char *word3 = "world!";
+
+  /*
   const char *arr[10];
   arr[0] = "hello there";
 
@@ -21,6 +60,7 @@ int main() {
 
   char *empty = "";
   printf("%c \n", *empty);
+  */
 
   // NULL_POINTER is defined in 6 header files (incuding stdlib.h)
   // malloc is defined in stdlib header file
@@ -35,8 +75,8 @@ int main() {
   hi
   */
 
-  const char *sentence = "hello \nwow, this is a long sentence huh";
-  print_str(sentence);
+  // const char *sentence = "hello \nwow, this is a long sentence huh";
+  // print_str(sentence);
 
   /*
   void *p;
