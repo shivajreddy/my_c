@@ -6,6 +6,7 @@ typedef struct {
 } Person;
 
 int main() {
-  printf("hello there");
+  printf("Hello World!\n");
+  printf("Hello World!\n");
   return 0;
 }
