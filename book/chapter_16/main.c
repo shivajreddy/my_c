@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 // STRUCTS
-
 struct Person
 {
     char name[10];
