@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <uthash.h>
-#include <utstring.h>
 
 typedef struct HashItem
 {
