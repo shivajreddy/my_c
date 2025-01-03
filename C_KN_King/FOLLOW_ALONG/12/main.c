@@ -1,28 +1,20 @@
-#include <stdbool.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <time.h>
 
-size_t my_strlen(char *str)
+int read_line(char[], int);
+
+int main() {}
+
+// Reads the line and
+int read_line(char str[], int max_size)
 {
-    int size = 0;
+    int ch;
+    int i = 0;
 
-    char *curr = str;
-    while (*curr != '\0') {
-        size++;
-        curr++;
-    }
+    while ((ch = getchar()) != '\n')
+        if (i < max_size)
+            str[i++] = ch;
 
-    return size;
+    str[i] = '\0';
+    return i;
 }
-
-int main()
-{
-    puts("hello there");
-    puts("hello there");
-
-    printf("%zu\n", my_strlen("reddy"));
-    printf("%lu\n", strlen("reddy"));
-}
-size_t strlen(const char *__s);
