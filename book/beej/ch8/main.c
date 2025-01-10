@@ -1,6 +1,71 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+// Read a line of arbitrary size from a file
+// Returns a pointer to the line
+//  Retunrs NULL on EOF or error.
+char* readline(FILE* fp) {
+  int offset = 0;   // Index next char goes in the buffer
+  int bufsize = 4;  // powers of 2, initial size
+  char* buf;        // the buffer
+  int c;            // the character we've read in
+
+  buf = malloc(bufsize);  // allocate initial size
+
+  if (buf == NULL) {
+    fprintf(stderr, "FAILED TO ALLOCATED BUFFER OF SIZE: %d", bufsize);
+    return NULL;
+  }
+
+  // Main loop-read until newline or EOF
+  while (c = fgetc(fp), c != '\n' && c != EOF) {
+    // check if we're out of room in the buffer accounting
+    // for the extra byte for the NUL terminator
+    if (offset == bufsize - 1) {  // -1 for the NUL terminator
+      bufsize *= 2;
+      char* new_buf = realloc(buf, bufsize);
+      if (new_buf == NULL) {
+        free(buf);
+        return NULL;
+      }
+      buf = new_buf;
+    }
+    buf[offset++] = c;
+  }
+
+  // we hit newline or EOF
+
+  // If at EOF and we read no bytes, free the buffer and
+  // return NULL to indicate we're at EOF
+  if (c == EOF && offset == 0) {
+    free(buf);
+    return NULL;
+  }
+
+  // Shrink to fit
+  if (offset < bufsize - 1) {
+    char* new_buf = realloc(buf, offset + 1);  // +1 for NUL
+    if (new_buf != NULL)
+      buf = new_buf;
+  }
+
+  buf[offset] = '\0';  // Add the NUL terminator
+
+  return buf;
+}
 
 int main() {
-  puts("hi");
+  FILE* file = fopen("hi.txt", "r");
+
+  char* line;
+
+  while ((line = readline(file)) != NULL) {
+    printf("%s\n", line);
+    free(line);
+  }
+
+  fclose(file);
+
+  puts("wow");
   return 0;
 }
