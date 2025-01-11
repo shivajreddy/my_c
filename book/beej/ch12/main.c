@@ -56,16 +56,48 @@ char* readline(FILE* fp) {
 
 int main() {
   FILE* file = fopen("hi.txt", "r");
-
-  char* line;
-
-  while ((line = readline(file)) != NULL) {
-    printf("%s\n", line);
-    free(line);
+  if (file == NULL) {
+    perror("FAILED TO OPEN FILE");
+    return 1;
   }
+
+  size_t buf_size = 4;
+  char* buf = malloc(buf_size);  // line
+
+  int i = 0;
+  char c;
+
+  while (c = fgetc(file), c != '\n') {
+    if (i == buf_size) {
+      buf_size *= 2;
+      buf = realloc(buf, buf_size);
+    }
+    buf[i++] = c;
+    printf("%c", c);
+  }
+
+  puts("");
+  puts("printfing buf");
+  printf("%s", buf);
+  // c = fgetc(file);
+  // printf("%c", c);
+  // c = fgetc(file);
+  // printf("%c", c);
+
+  /*
+  while (c = fgetc(file), c != '\n' && c != EOF) {
+    printf("%c", c);
+    // buf[i++] = c;
+  }
+
+  printf("%s\n", buf);
+
+
+  */
+  free(buf);
+  buf = NULL;
 
   fclose(file);
 
-  puts("wow");
   return 0;
 }
