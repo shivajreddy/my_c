@@ -1,15 +1,15 @@
+/* Chapter 15: Types III: Conversions */
+
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main(void) {
 
-  char* s = "2490";
+  int x = atoi("1234123");
+  printf("%d \n", x);
 
-  unsigned long int x = strtoul(s, NULL, 10);
-  printf("%lu\n", x);
-
-  int y = strtol("2183947", NULL, 10);
-  printf("%d\n", y);
+  char letter = 97;
+  printf("%c \n", letter);
 
   return 0;
 }
