@@ -35,10 +35,13 @@ void section_19_4_2() {
   printf("%ld\n", __STDC_VERSION__);
 }
 
+void section_19_4_3() {}
+
 int main(void) {
   // section_19_4();
   // section_19_4_1();
-  section_19_4_2();
+  // section_19_4_2();
+  section_19_4_3();
 
   return 0;
 }
