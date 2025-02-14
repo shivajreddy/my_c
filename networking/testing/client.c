@@ -23,7 +23,7 @@ int main() {
 
   remote.sin_port = htons(6969);
 
-  connect(sock, (void *)&remote, sizeof(remote));
+  connect(sock, (void*)&remote, sizeof(remote));
   write(sock, buffer, sizeof(buffer));
   close(sock);
   return 0;
