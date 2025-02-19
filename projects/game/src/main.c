@@ -1,50 +1,23 @@
-/*******************************************************************************************
- *
- *   raylib [core] examples - basic screen manager
- *
- *   Example complexity rating: [★☆☆☆] 1/4
- *
- *   NOTE: This example illustrates a very simple screen manager based on a
- *states machines
- *
- *   Example originally created with raylib 4.0, last time updated with
- *raylib 4.0
- *
- *   Example licensed under an unmodified zlib/libpng license, which is an
- *OSI-certified, BSD-like license that allows static linking with closed source
- *software
- *
- *   Copyright (c) 2021-2025 Ramon Santamaria (@raysan5)
- *
- ********************************************************************************************/
+// #include "raylib.h"
+#include "../include/raylib.h"
 
-#include "raylib.h"
-
-//------------------------------------------------------------------------------------------
 // Types and Structures Definition
-//------------------------------------------------------------------------------------------
 typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
 
-//------------------------------------------------------------------------------------
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 450
+#define WINDOW_TITLE "game"
+
 // Program main entry point
-//------------------------------------------------------------------------------------
 int main(void) {
   // Initialization
-  //--------------------------------------------------------------------------------------
-  const int screenWidth = 800;
-  const int screenHeight = 450;
-
-  InitWindow(screenWidth, screenHeight,
-             "raylib [core] example - basic screen manager");
+  InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
 
   GameScreen currentScreen = LOGO;
-
-  // TODO: Initialize all required variables and load all required data here!
 
   int framesCounter = 0; // Useful to count frames
 
   SetTargetFPS(60); // Set desired framerate (frames-per-second)
-  //--------------------------------------------------------------------------------------
 
   // Main game loop
   while (!WindowShouldClose()) // Detect window close button or ESC key
@@ -106,23 +79,21 @@ int main(void) {
     } break;
     case TITLE: {
       // TODO: Draw TITLE screen here!
-      DrawRectangle(0, 0, screenWidth, screenHeight, GREEN);
+      DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, GREEN);
       DrawText("TITLE SCREEN", 20, 20, 40, DARKGREEN);
       DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20,
                DARKGREEN);
-
     } break;
     case GAMEPLAY: {
       // TODO: Draw GAMEPLAY screen here!
-      DrawRectangle(0, 0, screenWidth, screenHeight, PURPLE);
+      DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, PURPLE);
       DrawText("GAMEPLAY SCREEN", 20, 20, 40, MAROON);
       DrawText("PRESS ENTER or TAP to JUMP to ENDING SCREEN", 130, 220, 20,
                MAROON);
-
     } break;
     case ENDING: {
       // TODO: Draw ENDING screen here!
-      DrawRectangle(0, 0, screenWidth, screenHeight, BLUE);
+      DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BLUE);
       DrawText("ENDING SCREEN", 20, 20, 40, DARKBLUE);
       DrawText("PRESS ENTER or TAP to RETURN to TITLE SCREEN", 120, 220, 20,
                DARKBLUE);
