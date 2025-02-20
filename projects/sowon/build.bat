@@ -1,6 +1,12 @@
 @echo off
 
 @echo "Compiling..."
-gcc ./src/main.c -o ./build/out.exe -Wall -Wextra -std=c99 -I .\include\ -L .\libs\ -lraylib -lopengl32 -lgdi32 -lwinmm
+gcc ./src/main.c -o ./build/out.exe -Wall -Wextra -std=c99 -I .\include\ -L .\lib\ -lraylib -lopengl32 -lgdi32 -lwinmm
 
-@echo "successfully written to ./build/out.exe"
+@if %errorlevel% equ 0 (
+    @echo "Compilation successful."
+    @echo "Running the program with argument 3..."
+    .\build\out.exe 5
+) else (
+    @echo "Compilation failed."
+)

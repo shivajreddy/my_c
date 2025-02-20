@@ -1,6 +1,6 @@
 [
   {
-    "directory": "C:\\Users\\sreddy\\Desktop\\sowon",
+    "directory": "C:\\Users\\shiva\\Desktop\\sowon",
     "command": "gcc -Iinclude -Llibs -lraylib -o build/out.exe src/main.c",
     "file": "src/main.c"
   }
