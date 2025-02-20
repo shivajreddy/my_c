@@ -13,9 +13,6 @@
 #include <assert.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
 
 // #include "raylib.h"
 #include "../include/raylib.h"
@@ -23,43 +20,24 @@
 //------------------------------------------------------------------------------------------
 // Program Definitions
 //------------------------------------------------------------------------------------------
+#define SCREEN_WIDTH 1300
+#define SCREEN_HEIGHT 400
+#define WINDOW_TITLE ""
 #define FPS 60
-#define SPRITE_CHAR_WIDTH (300 / 2)
-#define SPRITE_CHAR_HEIGHT (380 / 2)
-#define CHAR_WIDTH (300 / 2)
-#define CHAR_HEIGHT (380 / 2)
-#define CHARS_COUNT 8
-#define TEXT_WIDTH (CHAR_WIDTH * CHARS_COUNT)
-#define TEXT_HEIGHT (CHAR_HEIGHT)
-#define WIGGLE_COUNT 3
-#define WIGGLE_DURATION (0.40f / WIGGLE_COUNT)
-#define COLON_INDEX 10
-#define MAIN_COLOR_R 220
-#define MAIN_COLOR_G 220
-#define MAIN_COLOR_B 220
-#define PAUSE_COLOR_R 220
-#define PAUSE_COLOR_G 120
-#define PAUSE_COLOR_B 120
-#define BACKGROUND_COLOR_R 24
-#define BACKGROUND_COLOR_G 24
-#define BACKGROUND_COLOR_B 24
-#define SCALE_FACTOR 0.15f
-#define PENGER_SCALE 4
-#define PENGER_STEPS_PER_SECOND 3
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 450
 #define TITLE_CAP 256
 
 //------------------------------------------------------------------------------------------
 // Global Variables
 //------------------------------------------------------------------------------------------
 Texture2D digits;
+char hh, mm, ss;
+char variations[8] = {0, 1, 2, 3, 0, 0, 0, 1};
 
 // Handle Program Initialization
 void initialize_program() {
-  InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "COUNTER");
+  InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
   digits = LoadTexture("resources/digits.png");
-  SetTargetFPS(60);
+  SetTargetFPS(FPS);
 }
 
 // Handle Program De-Initialization
@@ -68,44 +46,132 @@ void clean_up_program() {
   CloseWindow();
 }
 
-void draw_digit(int num, int variation, float x, float y) {
+/*
+symbol_idx : 0 1 2 3 4 5 6 7 8 9 10
+symbol:      0 1 2 3 4 5 6 7 8 9 :
+*/
+void draw_symbol(char symbol_idx, char variation, float pos_x, float pos_y) {
   float width = (float)digits.width / 11;
   float height = (float)digits.height / 3;
 
-  int start_x = num * width;
+  int start_x = symbol_idx * width;
   int start_y = variation * height;
 
   // crop the texture (crop from (0,0) with W*H size)
   Rectangle source_rec = {start_x, start_y, width, height};
   // Define where to draw the cropped texture
-  Rectangle dest_rec = {x, y, width, height};
+  Rectangle dest_rec = {pos_x, pos_y, width, height};
   // center origin
   Vector2 origin = {0, 0};
 
   DrawTexturePro(digits, source_rec, dest_rec, origin, 0, WHITE);
 }
 
+// clock is in the format HH MM SS
+void draw_clock() {
+  char temp_hh = hh, temp_mm = mm, temp_ss = ss;
+
+  // create & set the buffer using hh,mm,ss
+  char counter_clock[6];
+  // set hours
+  counter_clock[1] = temp_hh % 10;
+  temp_hh /= 10;
+  counter_clock[0] = temp_hh % 10;
+
+  // set minutes
+  counter_clock[3] = temp_mm % 10;
+  temp_mm /= 10;
+  counter_clock[2] = temp_mm % 10;
+
+  // set seconds
+  counter_clock[5] = temp_ss % 10;
+  temp_ss /= 10;
+  counter_clock[4] = temp_ss % 10;
+
+  int symbol_width = (int)(digits.width / 11);
+
+  // Draw Hours
+  draw_symbol(counter_clock[0], variations[0], symbol_width * 0, 120);
+  draw_symbol(counter_clock[1], variations[1], symbol_width * 1, 120);
+  draw_symbol(10, variations[2], symbol_width * 2, 120);
+  // Draw Minutes
+  draw_symbol(counter_clock[2], variations[3], symbol_width * 3, 120);
+  draw_symbol(counter_clock[3], variations[4], symbol_width * 4, 120);
+  draw_symbol(10, variations[5], symbol_width * 5, 120);
+  // Draw Seconds
+  draw_symbol(counter_clock[4], variations[6], symbol_width * 6, 120);
+  draw_symbol(counter_clock[5], variations[7], symbol_width * 7, 120);
+}
+
+// update counter time
+int update_counter_time() {
+  ss--;
+  if (ss < 0) {
+    ss = 59;
+    mm--;
+  }
+  if (mm < 0) {
+    mm = 59;
+    hh--;
+  }
+  if (hh < 0) {
+    clean_up_program();
+    return -1;
+  }
+  return 1;
+}
+
 int main(int argc, char **argv) {
   // Initialization
   initialize_program();
 
-  int variation = 0;        // current variation (0, 1, 2)
-  float change_time = 0.25; // in seconds
-  double last_updated_time = GetTime();
+  double last_updated_time_of_variations = GetTime();
+  double last_updated_time_of_clock = GetTime();
+
+  // Set the counter time, using user input or default to 10 mins
+  if (argc > 1) { // Use user's count down time
+    //  TODO: use users time
+    printf("Arguments passed:\n");
+    for (int i = 0; i < argc; i++) {
+      printf("argv[%d]: %s\n", i, argv[i]);
+    }
+    hh = 0;
+    mm = 10;
+    ss = 0;
+  } else { // set default timer to 10 mins
+    hh = 0;
+    mm = 10;
+    ss = 0;
+  }
 
   // Main game loop
   while (!WindowShouldClose()) // Detect window close button or ESC key
   {
-    // update animation variation
     double current_time = GetTime();
-    if (current_time - last_updated_time >= change_time) {
-      variation = (variation + 1) % 3; // cycle through 0, 1, 2
-      last_updated_time = current_time;
+
+    // update variations of symbols for every 0.25 second
+    if (current_time - last_updated_time_of_variations >= 0.25) {
+      // update all variations
+      for (int i = 0; i < 8; i++) {
+        // cycle through 0, 1, 2
+        variations[i] = (char)(((int)variations[i] + 1) % 3);
+      }
+      last_updated_time_of_variations = current_time;
+    }
+
+    // update clock-time every 1 second
+    if (current_time - last_updated_time_of_clock >= 1.0) {
+      if (update_counter_time() == -1) {
+        CloseWindow();
+        break;
+      }
+      last_updated_time_of_clock = current_time;
     }
 
     BeginDrawing();
-    ClearBackground(MAROON);
-    draw_digit(2, variation + 2, 350, 200);
+    ClearBackground(BLACK);
+
+    draw_clock();
 
     EndDrawing();
   }

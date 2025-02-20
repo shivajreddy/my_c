@@ -6,7 +6,7 @@ gcc ./src/main.c -o ./build/out.exe -Wall -Wextra -std=c99 -I .\include\ -L .\li
 @if %errorlevel% equ 0 (
     @echo "Compilation successful."
     @echo "Running the program with argument 3..."
-    .\build\out.exe 5
+    .\build\out.exe 20
 ) else (
     @echo "Compilation failed."
 )
