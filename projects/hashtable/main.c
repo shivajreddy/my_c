@@ -3,7 +3,7 @@
 #include <string.h>
 
 #define MAX_NAME 100
-#define MAX_SIZE 10
+#define TABLE_SIZE 10
 
 typedef struct Person {
   char name[MAX_NAME];
@@ -13,23 +13,44 @@ typedef struct Person {
 
 // HASH FUNCTION
 unsigned int hash(char *name) {
-  unsigned int check_sum = 0;
+  unsigned int hash_val = 0;
   for (size_t i = 0; i < strlen(name); i++) {
-    check_sum += (int)name[i]; // ascii code
+    int ch = name[i]; // ascii code
+    hash_val += ch;
+    hash_val = (hash_val * ch) % TABLE_SIZE;
   }
-  return check_sum;
+  return hash_val;
+}
+
+Person *hash_table[TABLE_SIZE];
+
+void init_hashtable() {
+  // Start with an empty table
+  for (size_t i = 0; i < TABLE_SIZE; i++) {
+    hash_table[i] = NULL;
+  }
+}
+
+void print_hashtable() {
+  for (size_t i = 0; i < TABLE_SIZE; i++) {
+    Person *p = hash_table[i];
+    if (p != NULL) {
+      printf("[%s , %d]", p->name, p->age);
+    } else {
+      printf("\t---");
+    }
+  }
+  printf("\n");
 }
 
 void test(char *name) {
-  //
-  printf("%s => %u \n", name, hash(name));
+  unsigned int hash_result = hash(name);
+  printf("%s => %u \n", name, hash_result);
 }
 
 int main() {
-  // char *name = "shiva reddy";
-  // for (size_t i = 0; i < strlen(name); i++) {
-  //   printf("%ld : %c : %d\n", i, name[i], (int)name[i]);
-  // }
+  init_hashtable();
+  print_hashtable();
 
   test("Jacob");
   test("Natalie");
@@ -38,6 +59,8 @@ int main() {
   test("Tebogo");
   test("Ron");
   test("Jane");
+  test("Maren");
+  test("Bill");
 
   return EXIT_SUCCESS;
 }
