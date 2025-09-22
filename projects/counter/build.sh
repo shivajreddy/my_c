@@ -1,8 +1,10 @@
 #!/bin/bash
 
 echo "Compiling..."
-gcc ./src/main.c -o ./build/out -Wall -Wextra -std=c99 -I./include -L./lib \
-    -lraylib -lm -ldl -lpthread -lGL -lX11
+gcc ./src/main.c -o ./build/out -Wall -Wextra -std=c99 -I./include -L./lib \ -lraylib -lm -ldl -lpthread -lGL -lX11
+gcc ./src/main.c -o ./build/out -Wall -Wextra -std=c99 \
+    -I./include -I./lib_linux/include \
+    -L./lib_linux -lraylib -lm -ldl -lpthread -lGL -lX11
 
 if [ $? -eq 0 ]; then
     echo "Compilation successful."
