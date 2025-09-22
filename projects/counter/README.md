@@ -10,9 +10,9 @@ raylib files are inside 'lib' folder
   build.sh file doesnt have permission give by 'chdmod +x ./build.sh'
 
 (this command is same for both windows & Unix)
-  - counter         # runs with default timer set in main.c which is 10minutes
-  - counter 1 2 3   # 1hr 2mins 3seconds
-  - counter 4 5     # 4mins 5seconds
-  - counter 6       # 6seconds
+  - build           # runs with default timer set in main.c which is 10minutes
+  - build   1 2 3   # 1hr 2mins 3seconds
+  - build   4 5     # 4mins 5seconds
+  - build   6       # 6seconds
   so basically 1arg is seconds, 2arg is min-secs, 3args are hh-mm-ss
 
