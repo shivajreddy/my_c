@@ -6,8 +6,24 @@ gcc ./src/main.c -o ./build/out -Wall -Wextra -std=c99 -I./include -L./lib \
 
 if [ $? -eq 0 ]; then
     echo "Compilation successful."
-    echo "Running the program with argument 20..."
-    ./build/out 20
+
+    if [ -z "$3" ]; then
+        if [ -z "$2" ]; then
+            if [ -z "$1" ]; then
+                echo "Running with default timer..."
+                ./build/out
+            else
+                echo "Running with seconds: $1"
+                ./build/out "$1"
+            fi
+        else
+            echo "Running with minutes: $1, seconds: $2"
+            ./build/out "$1" "$2"
+        fi
+    else
+        echo "Running with hours: $1, minutes: $2, seconds: $3"
+        ./build/out "$1" "$2" "$3"
+    fi
 else
     echo "Compilation failed."
 fi

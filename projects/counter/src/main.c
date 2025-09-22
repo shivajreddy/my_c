@@ -13,6 +13,7 @@
 #include <assert.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 // #include "raylib.h"
 #include "../include/raylib.h"
@@ -128,20 +129,31 @@ int main(int argc, char **argv) {
   double last_updated_time_of_variations = GetTime();
   double last_updated_time_of_clock = GetTime();
 
-  // Set the counter time, using user input or default to 10 mins
-  if (argc > 1) { // Use user's count down time
-    //  TODO: use users time
-    printf("Arguments passed:\n");
-    for (int i = 0; i < argc; i++) {
-      printf("argv[%d]: %s\n", i, argv[i]);
-    }
+  // Parse user input
+  if (argc == 1) {
+    // No args → default to 10 minutes
     hh = 0;
     mm = 10;
     ss = 0;
-  } else { // set default timer to 10 mins
+    printf("No arguments provided. Defaulting to 10 minutes.\n");
+  } else if (argc == 2) {
+    // 1 arg → seconds
     hh = 0;
-    mm = 10;
-    ss = 0;
+    mm = 0;
+    ss = atoi(argv[1]);
+    printf("Timer set to %d seconds.\n", ss);
+  } else if (argc == 3) {
+    // 2 args → minutes + seconds
+    hh = 0;
+    mm = atoi(argv[1]);
+    ss = atoi(argv[2]);
+    printf("Timer set to %d minutes %d seconds.\n", mm, ss);
+  } else if (argc >= 4) {
+    // 3 args → hours + minutes + seconds
+    hh = atoi(argv[1]);
+    mm = atoi(argv[2]);
+    ss = atoi(argv[3]);
+    printf("Timer set to %d hours %d minutes %d seconds.\n", hh, mm, ss);
   }
 
   // Main game loop
