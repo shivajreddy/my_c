@@ -7,6 +7,7 @@ raylib files are inside 'lib' folder
   folder
 
 # UNIX
-## PreRequisites: 
+- open the 'counter' app directory in terminal, run the 'build.sh', if the 
+  build.sh file doesnt have permission give by 'chdmod +x ./build.sh'
 
 
