@@ -1,14 +1,23 @@
 #!/bin/bash
 
 echo "Compiling..."
-gcc ./src/main.c -o ./build/out -Wall -Wextra -std=c99 -I./include -L./lib \ -lraylib -lm -ldl -lpthread -lGL -lX11
-gcc ./src/main.c -o ./build/out -Wall -Wextra -std=c99 \
-    -I./include -I./lib_linux/include \
-    -L./lib_linux -lraylib -lm -ldl -lpthread -lGL -lX11
+
+case "$(uname)" in
+Linux)
+    gcc ./src/main.c -o ./build/out -Wall -Wextra -std=c99 \
+        -I./include -I./lib_linux/include \
+        -L./lib_linux -lraylib -lm -ldl -lpthread -lGL -lX11
+    ;;
+Darwin) # macOS
+    gcc ./src/main.c -o ./build/out -Wall -Wextra -std=c99 \
+        -I./include -I./lib_macos/include \
+        ./lib_macos/lib/libraylib.a \
+        -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL
+    ;;
+esac
 
 if [ $? -eq 0 ]; then
     echo "Compilation successful."
-
     if [ -z "$3" ]; then
         if [ -z "$2" ]; then
             if [ -z "$1" ]; then
