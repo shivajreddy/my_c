@@ -20,11 +20,14 @@ int server(int portno) {
         exit(1);
     }
 
+    /*
     struct sockaddr_in serv_addr = { .sin_family = AF_INET6,
                                      .sin_addr.s_addr = INADDR_ANY,
                                      .sin_port = htons(portno) };
+    */
     struct sockaddr* serv_addr = malloc(sizeof(struct sockaddr));
-    struct sockaddr_in cli_addr;
+    serv_addr->sin_family = AF_INET6;
+    serv_addr->struct sockaddr_in cli_addr;
 
     if (bind(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) {
         perror("ERROR on binding");
