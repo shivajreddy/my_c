@@ -10,6 +10,8 @@ int main(void) {
     int id = server(9188);
     printf("id: %d\n", id);
 
+    struct sockaddr serv_addr;
+
     /*
     int fd = socket(AF_INET6, SOCK_DGRAM | SOCK_NONBLOCK, 0);
     printf("res = %d\n", fd);
