@@ -1,3 +1,0 @@
-CompileFlags:
-  Add: [-Wno-main-return-type]
-
