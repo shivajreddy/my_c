@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: Project Details
-set PROJECT_NAME=engine
+set PROJECT_NAME=gui
 
 :: Source, build, and output directories
 set SRC_DIR=src
@@ -29,16 +29,13 @@ for %%f in (%SRC_DIR%\*.cpp) do (
     set FILES=!FILES! %%f
 )
 
+:: Compile the code
 echo Compiling sources from %SRC_DIR% ...
-cl /nologo /std:c++20 /EHsc /W4 /O2 ^
+cl /nologo /std:c++20 /EHsc /W4 /O2 /Zi ^
    /Fo%BUILD_DIR%\ ^
    /Fe%BIN_DIR%\%OUT% ^
-   %FILES%
-
-if errorlevel 1 (
-    echo Compilation failed.
-    exit /b 1
-)
+   %FILES% ^
+   user32.lib gdi32.lib
 
 cls
 REM echo Running %BIN_DIR%\%OUT% ...

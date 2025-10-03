@@ -1,12 +1,12 @@
 CompileFlags:
   # Add compiler options (so clangd matches how you actually compile your code)
   Add: 
-    - std=c++20          # or -std=c++20 if you’re doing C++
-    - Wall
-    - Wextra
-    - Wpedantic
-    - fms-extensions     # helps with MSVC headers on Windows
-    - target=x86_64-pc-windows-msvc
+    - -std=c++20          # or -std=c++20 if you’re doing C++
+    - -Wall
+    - -Wextra
+    - -Wpedantic
+    - -fms-extensions     # helps with MSVC headers on Windows
+    - --target=x86_64-pc-windows-msvc
 
 # Tell clangd where to find system headers
 IncludePath:
