@@ -1,0 +1,24 @@
+CompileFlags:
+  # Add compiler options (so clangd matches how you actually compile your code)
+  Add: 
+    - std=c++20          # or -std=c++20 if you’re doing C++
+    - Wall
+    - Wextra
+    - Wpedantic
+    - fms-extensions     # helps with MSVC headers on Windows
+    - target=x86_64-pc-windows-msvc
+
+# Tell clangd where to find system headers
+IncludePath:
+  - C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/*/include
+  - C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/*/atlmfc/include
+  - C:/Program Files (x86)/Windows Kits/10/Include/*/ucrt
+  - C:/Program Files (x86)/Windows Kits/10/Include/*/um
+  - C:/Program Files (x86)/Windows Kits/10/Include/*/shared
+
+# Index settings (optional but useful)
+Index:
+  Background: Build
+  StandardLibrary: Yes
+  Comments: Yes
+
