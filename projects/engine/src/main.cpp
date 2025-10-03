@@ -5,7 +5,8 @@ using namespace std;
 int add(int a, int b);
 
 int main() {
-    std::cout << "hello there\n";
+    // cout << "hello there\n";
+    cout << add(20, 88) << endl;
     return 0;
 }
 
